@@ -1,0 +1,14 @@
+.clickpesa-layout
+    .top-bar-header.clickpesa-dashboard
+        transition: margin-left .25s, width .25s
+
+    &[data-sidebar-collapsed="true"]
+        .top-bar-header.clickpesa-dashboard
+            margin-left: 72px
+            width: calc(100% - 72px)
+
+    @media screen and (max-width: 767px)
+        &[data-sidebar-collapsed="true"]
+            .top-bar-header.clickpesa-dashboard
+                margin-left: 0
+                width: 100%

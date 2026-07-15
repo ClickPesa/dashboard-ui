@@ -1,0 +1,41 @@
+{
+  "name": "@clickpesa/dashboard-ui",
+  "version": "0.1.0",
+  "description": "Shared ClickPesa dashboard UI components",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --outDir dist && node scripts/copy-styles.js",
+    "prepublishOnly": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClickPesa/dashboard-ui.git"
+  },
+  "license": "UNLICENSED",
+  "peerDependencies": {
+    "@clickpesa/components-library.caret-down": "*",
+    "@clickpesa/components-library.footer": "*",
+    "@clickpesa/components-library.icon-button": "*",
+    "@clickpesa/components-library.icons.menu": "*",
+    "@clickpesa/components-library.top-bar": "*",
+    "@radix-ui/react-popover": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.0.0",
+    "react-use": "^17.0.0"
+  },
+  "devDependencies": {
+    "@radix-ui/react-popover": "^1.0.6",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "react-use": "^17.4.0",
+    "typescript": "^5.2.2"
+  }
+}

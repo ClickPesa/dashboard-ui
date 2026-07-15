@@ -1,0 +1,67 @@
+.sidebar-template-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: fit-content
+    overflow-y: auto
+    overflow-x: hidden
+    height: 100vh
+    gap: 16px
+    position: fixed
+    left: 0
+    top: 0
+    bottom: 0
+    transition: .25s
+    z-index: 10000
+    @supports(height: 100dvh)
+        height: 100dvh
+
+    &.clickpesa
+        background: #FDDC01
+
+    &.getpaid
+        background: #1548A1
+
+    &.dark
+        background: #2B343A
+
+    &.collapsed
+        .sidebar-template-items
+            padding: 0 8px 18px
+            align-items: center
+
+    .sidebar-template-items
+        padding: 0 16px 18px
+        justify-content: space-between
+        height: 100%
+        flex: 1
+        display: flex
+        flex-direction: column
+        width: 100%
+        box-sizing: border-box
+
+.sidebar-backdrop
+    display: none
+
+@media screen and ( max-width: 767px )
+    .sidebar-template-container
+        transform: translateX(-101%)
+        &.open
+            transform: translateX(0)
+        &.collapsed
+            .sidebar-template-items
+                padding: 0 16px 18px
+    .sidebar-backdrop
+        display: block
+        position: fixed
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        background: rgba(0, 0, 0, .2)
+        z-index: 9999
+        pointer-events: none
+        opacity: 0
+        &.open
+            pointer-events: all
+            opacity: 1

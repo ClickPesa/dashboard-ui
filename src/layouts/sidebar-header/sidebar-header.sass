@@ -1,0 +1,116 @@
+.sidebar-header-trigger
+    display: flex
+    align-items: center
+    padding: 18px 16px
+    gap: 8px
+    width: 300px
+    background: #FFFFFF
+    border: none
+    outline: none
+    cursor: default
+    transition: width .25s, padding .25s
+
+    &.collapsed
+        width: 72px
+        padding: 18px 16px
+        justify-content: center
+
+        .wrapper
+            justify-content: center
+
+            .sidebar-header-text,
+            & > svg
+                display: none
+
+        svg.caret
+            display: none
+
+    &.dark
+        background: #1E272E
+        &.hover
+            &:hover
+                background: #2B343A
+        .wrapper
+            div
+                h3, p
+                    color: white
+
+    &.hover
+        cursor: pointer
+        &:hover
+            background: rgba(255, 255, 255, 0.90)
+
+    .wrapper
+        display: flex
+        align-items: center
+        gap: 10px
+        width: 100%
+
+        img
+            width: 40px
+            height: 40px
+            min-width: 40px
+            border-radius: 8px
+
+        .sidebar-header-text
+            display: flex
+            flex-direction: column
+            align-items: flex-start
+            max-width: calc(100% - 50px)
+
+            h3, p
+                margin: 0
+                max-width: 100%
+                overflow: hidden
+                text-overflow: ellipsis
+                white-space: nowrap
+
+            h3
+                font-weight: 700
+                font-size: 19px
+                color: #454E57
+
+            p
+                font-weight: 450
+                font-size: 13px
+                color: #454E57
+                opacity: 0.8
+
+    svg
+        color: #82888E
+
+.side-bar-content
+    box-sizing: border-box
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
+    padding: 8px
+    width: 280px
+    background: #FFFFFF
+    box-shadow: 0px 8px 8px -4px rgba(16, 24, 40, 0.03), 0px 20px 24px -6px rgba(16, 24, 40, 0.08)
+    border-radius: 4px
+    margin-top: -8px
+    &div[data-radix-popper-content-wrapper]
+        z-index: 10001 !important
+    &.dark
+        background: #1E272E
+        .product
+            background: transparent
+            color: white
+            &:hover
+                background: rgba(255, 255, 255, .05)
+
+    .product
+        box-sizing: border-box
+        padding: 8px
+        width: 100%
+        border-radius: 4px
+        cursor: pointer
+        border: none
+        outline: none
+        background: #fff
+        text-align: left
+
+        &:hover
+            background: rgba(0, 0, 0, 0.1)

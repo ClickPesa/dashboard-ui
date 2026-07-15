@@ -1,0 +1,109 @@
+.sidebar-menu-item-container
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    justify-content: flex-start
+    border-radius: 5px
+    margin: 4px 0
+
+    &.collapsed
+        align-items: center
+        width: 100%
+
+        .item
+            width: 40px
+            padding: 8px
+            justify-content: center
+
+            .wrapper
+                justify-content: center
+                gap: 0
+
+                .sidebar-menu-item-title
+                    display: none
+
+            .sidebar-menu-item-caret
+                display: none
+
+        .children_container
+            display: none !important
+
+        &.open
+            background-color: transparent !important
+
+    &.getpaid, &.dark
+        .item
+            color: rgba(255, 255, 255, .65) !important
+            &:hover
+                background-color: rgba(255, 255, 255, 0.03)
+
+            &.active
+                background-color: rgba(255, 255, 255, 0.07)
+                color: white !important
+        .children_container
+            .child
+                color: rgba(255, 255, 255, .65) !important
+                &.hover
+                    background-color: rgba(255, 255, 255, 0.05) !important
+                &.active
+                    background-color: rgba(255, 255, 255, 0.07) !important
+        &.open
+            background-color: rgba(255, 255, 255, 0.07) !important
+            .item
+                color: white !important
+    .item
+        text-decoration: none
+        color: black
+        cursor: pointer
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 8px 16px
+        width: 250px
+        border-radius: 5px
+        transition: width .25s, padding .25s
+
+        .wrapper
+            display: flex
+            align-items: center
+            gap: 8px
+            width: 100%
+
+        &:hover
+            background-color: rgba(69, 78, 87, 0.05)
+
+        &.active
+            background-color: white
+            color: black
+
+    .children_container
+        width: 250px
+        margin: 0 0 .5rem
+        display: none
+        max-height: 0
+        transition: max-height .25s
+        .child
+            text-decoration: none
+            color: #454E57
+            cursor: pointer
+            display: flex
+            align-items: center
+            padding: 8px 16px
+            gap: 8px
+            border-radius: 5px
+            margin: 0 1rem
+            &:hover
+                background-color: rgba(69, 78, 87, 0.05)
+            &.active
+                background-color: rgba(69, 78, 87, 0.1)
+
+    &.open
+        background-color: #fff
+        transition: .25s
+        .item
+            color: black !important
+        .children_container
+            display: flex
+            max-height: max-content
+            flex-direction: column
+            gap: 4px
