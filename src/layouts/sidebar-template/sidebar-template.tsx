@@ -5,6 +5,7 @@ import { SidebarHeader } from "../sidebar-header/sidebar-header";
 interface ProductType {
   productName: string;
   logo: string;
+  id?: string;
 }
 
 export type SidebarTemplateProps = {
@@ -13,8 +14,8 @@ export type SidebarTemplateProps = {
   name: string;
   products?: ProductType[];
   logo?: string;
-  email: string;
-  handleSwitching: (productName: string) => void;
+  email: ReactNode;
+  handleSwitching: (product: string) => void;
   mode?: "dark" | "light";
   sidebarOpen: boolean;
   close: () => void;
@@ -23,6 +24,7 @@ export type SidebarTemplateProps = {
   sidebarFooterItem?: ReactNode;
   collapsed?: boolean;
   onExpand?: () => void;
+  selectedProduct?: string;
 };
 
 export function SidebarTemplate({
@@ -41,6 +43,7 @@ export function SidebarTemplate({
   sidebarFooterItem,
   collapsed = false,
   onExpand,
+  selectedProduct,
 }: SidebarTemplateProps) {
   return (
     <>
@@ -66,6 +69,7 @@ export function SidebarTemplate({
           homeLink={homeLink}
           collapsed={collapsed}
           onExpand={onExpand}
+          selectedProduct={selectedProduct}
         />
         <div className="sidebar-template-items">
           {sidebarItems}

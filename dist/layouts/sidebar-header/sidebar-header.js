@@ -38,7 +38,7 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const Popover = __importStar(require("@radix-ui/react-popover"));
 const components_library_caret_down_1 = require("@clickpesa/components-library.caret-down");
 require("./sidebar-header.sass");
-function SidebarHeader({ name, email, logo, products, handleSwitching, mode, Link, homeLink, collapsed = false, onExpand, }) {
+function SidebarHeader({ name, email, logo, products, handleSwitching, mode, Link, homeLink, collapsed = false, onExpand, selectedProduct, }) {
     var _a;
     const logoSrc = logo !== null && logo !== void 0 ? logo : (_a = products === null || products === void 0 ? void 0 : products.find((p) => p.productName === name)) === null || _a === void 0 ? void 0 : _a.logo;
     const logoEl = homeLink && Link ? ((0, jsx_runtime_1.jsx)(Link, { to: homeLink, children: (0, jsx_runtime_1.jsx)("img", { src: logoSrc, alt: `${name}_logo` }) })) : ((0, jsx_runtime_1.jsx)("img", { src: logoSrc, alt: `${name}_logo` }));
@@ -49,7 +49,13 @@ function SidebarHeader({ name, email, logo, products, handleSwitching, mode, Lin
                 }
             }, children: (0, jsx_runtime_1.jsx)("div", { className: "wrapper", children: logoEl }) }));
     }
-    return ((0, jsx_runtime_1.jsxs)(Popover.Root, { children: [(0, jsx_runtime_1.jsxs)(Popover.Trigger, { className: `sidebar-header-trigger ${products ? "hover" : ""} ${mode !== null && mode !== void 0 ? mode : ""}`, children: [(0, jsx_runtime_1.jsxs)("div", { className: "wrapper", children: [logoEl, (0, jsx_runtime_1.jsxs)("div", { className: "sidebar-header-text", children: [(0, jsx_runtime_1.jsx)("h3", { children: name }), (0, jsx_runtime_1.jsx)("p", { children: email })] })] }), products && (0, jsx_runtime_1.jsx)(components_library_caret_down_1.CaretDown, { className: "caret" })] }), products && ((0, jsx_runtime_1.jsx)(Popover.Portal, { children: (0, jsx_runtime_1.jsx)(Popover.Content, { className: `side-bar-content ${mode !== null && mode !== void 0 ? mode : ""}`, children: products.map(({ productName, ...rest }, index) => ((0, jsx_runtime_1.jsx)(Popover.Close, { className: "product", onClick: () => {
-                            handleSwitching(productName);
-                        }, ...rest, children: productName }, index))) }) }))] }));
+    return ((0, jsx_runtime_1.jsxs)(Popover.Root, { children: [(0, jsx_runtime_1.jsxs)(Popover.Trigger, { className: `sidebar-header-trigger ${products ? "hover" : ""} ${mode !== null && mode !== void 0 ? mode : ""}`, children: [(0, jsx_runtime_1.jsxs)("div", { className: "wrapper", children: [logoEl, (0, jsx_runtime_1.jsxs)("div", { className: "sidebar-header-text", children: [(0, jsx_runtime_1.jsx)("h3", { children: name }), (0, jsx_runtime_1.jsx)("p", { children: email })] })] }), products && (0, jsx_runtime_1.jsx)(components_library_caret_down_1.CaretDown, { className: "caret" })] }), products && ((0, jsx_runtime_1.jsx)(Popover.Portal, { children: (0, jsx_runtime_1.jsx)(Popover.Content, { className: `side-bar-content ${mode !== null && mode !== void 0 ? mode : ""}`, children: products.map(({ productName, id, ...rest }, index) => {
+                        const value = id || productName;
+                        const isActive = selectedProduct
+                            ? selectedProduct === id || selectedProduct === productName
+                            : false;
+                        return ((0, jsx_runtime_1.jsx)(Popover.Close, { className: `product ${isActive ? "active" : ""}`, onClick: () => {
+                                handleSwitching(value);
+                            }, ...rest, children: productName }, index));
+                    }) }) }))] }));
 }

@@ -3,6 +3,7 @@ import "./sidebar-template.sass";
 interface ProductType {
     productName: string;
     logo: string;
+    id?: string;
 }
 export type SidebarTemplateProps = {
     sidebarItems: ReactNode;
@@ -10,8 +11,8 @@ export type SidebarTemplateProps = {
     name: string;
     products?: ProductType[];
     logo?: string;
-    email: string;
-    handleSwitching: (productName: string) => void;
+    email: ReactNode;
+    handleSwitching: (product: string) => void;
     mode?: "dark" | "light";
     sidebarOpen: boolean;
     close: () => void;
@@ -20,6 +21,7 @@ export type SidebarTemplateProps = {
     sidebarFooterItem?: ReactNode;
     collapsed?: boolean;
     onExpand?: () => void;
+    selectedProduct?: string;
 };
-export declare function SidebarTemplate({ sidebarItems, background, name, products, logo, email, handleSwitching, mode, sidebarOpen, close, homeLink, Link, sidebarFooterItem, collapsed, onExpand, }: SidebarTemplateProps): import("react").JSX.Element;
+export declare function SidebarTemplate({ sidebarItems, background, name, products, logo, email, handleSwitching, mode, sidebarOpen, close, homeLink, Link, sidebarFooterItem, collapsed, onExpand, selectedProduct, }: SidebarTemplateProps): import("react").JSX.Element;
 export {};

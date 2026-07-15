@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { CSSProperties, ReactNode, useEffect, useState } from "react";
 import { TopBar } from "@clickpesa/components-library.top-bar";
 import { Menu } from "@clickpesa/components-library.icons.menu";
 import { IconButton } from "@clickpesa/components-library.icon-button";
@@ -18,6 +18,7 @@ const DEFAULT_SIDEBAR_COLLAPSED_STORAGE_KEY = "sidebar-collapsed";
 interface ProductType {
   productName: string;
   logo: string;
+  id?: string;
 }
 
 export type SidebarMenu = SidebarMenuItemProps;
@@ -42,7 +43,7 @@ export type ClickpesaLayoutProps = {
   productName?: string;
   productLogo?: string;
   onProductChange?: (name: string) => void;
-  email: string;
+  email: ReactNode;
   letter?: string;
   menuItems: UserProfilePopoverItems[];
   preferences_categories: PreferenceCategories;
@@ -71,6 +72,8 @@ export type ClickpesaLayoutProps = {
   showNotification?: boolean;
   /** localStorage key for desktop collapse preference */
   sidebarCollapsedStorageKey?: string;
+  /** Active product/merchant id for the product switcher */
+  selectedProduct?: string;
 };
 
 function PanelLeftIcon({ collapsed }: { collapsed: boolean }) {
@@ -157,6 +160,7 @@ export function ClickpesaLayout({
   customActions,
   showNotification = true,
   sidebarCollapsedStorageKey = DEFAULT_SIDEBAR_COLLAPSED_STORAGE_KEY,
+  selectedProduct,
 }: ClickpesaLayoutProps) {
   const { width } = useWindowSize();
   const isDesktop = width > 767;
@@ -218,10 +222,13 @@ export function ClickpesaLayout({
     <div
       className="clickpesa-layout"
       data-sidebar-collapsed={desktopCollapsed ? "true" : "false"}
-      style={{
-        background: theme === "dark" ? "#1E272E" : "#F2F3F8",
-        minHeight: "100vh",
-      }}
+      style={
+        {
+          background: theme === "dark" ? "#1E272E" : "#F2F3F8",
+          minHeight: "100vh",
+          ["--cp-sidebar-width" as string]: `${sidebarWidth}px`,
+        } as CSSProperties
+      }
       data-testid="clickpesa-layout"
     >
       <SidebarTemplate
@@ -229,6 +236,7 @@ export function ClickpesaLayout({
         close={() => setSidebarOpen(false)}
         collapsed={desktopCollapsed}
         onExpand={expandSidebar}
+        selectedProduct={selectedProduct}
         sidebarItems={
           <>
             {sidebarMenuItems.length > 0 && (

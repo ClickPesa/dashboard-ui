@@ -4,6 +4,7 @@ import "./clickpesa-layout.sass";
 interface ProductType {
     productName: string;
     logo: string;
+    id?: string;
 }
 export type SidebarMenu = SidebarMenuItemProps;
 interface PreferenceCategories {
@@ -24,7 +25,7 @@ export type ClickpesaLayoutProps = {
     productName?: string;
     productLogo?: string;
     onProductChange?: (name: string) => void;
-    email: string;
+    email: ReactNode;
     letter?: string;
     menuItems: UserProfilePopoverItems[];
     preferences_categories: PreferenceCategories;
@@ -53,6 +54,8 @@ export type ClickpesaLayoutProps = {
     showNotification?: boolean;
     /** localStorage key for desktop collapse preference */
     sidebarCollapsedStorageKey?: string;
+    /** Active product/merchant id for the product switcher */
+    selectedProduct?: string;
 };
-export declare function ClickpesaLayout({ products, productLogo, productName, email, onProductChange, children, mode, preferences_categories, magicBellUserKey, magicbellApiKey, magicbellUserEmail, magicbellUserExternalId, menuItems, menu_has_icon, onLogout, onNotificationClick, onModeChange, darkModeSwitcher, letter, privacyPolicyUrl, termsAndConditionsUrl, sidebarMenuItems, Link, full_name, homeLink, sidebarSettingsLink, isSidebardSettingsLinkActive, customActions, showNotification, sidebarCollapsedStorageKey, }: ClickpesaLayoutProps): import("react").JSX.Element;
+export declare function ClickpesaLayout({ products, productLogo, productName, email, onProductChange, children, mode, preferences_categories, magicBellUserKey, magicbellApiKey, magicbellUserEmail, magicbellUserExternalId, menuItems, menu_has_icon, onLogout, onNotificationClick, onModeChange, darkModeSwitcher, letter, privacyPolicyUrl, termsAndConditionsUrl, sidebarMenuItems, Link, full_name, homeLink, sidebarSettingsLink, isSidebardSettingsLinkActive, customActions, showNotification, sidebarCollapsedStorageKey, selectedProduct, }: ClickpesaLayoutProps): import("react").JSX.Element;
 export {};

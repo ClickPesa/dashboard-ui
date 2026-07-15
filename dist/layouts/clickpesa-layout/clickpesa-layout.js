@@ -28,7 +28,7 @@ function readCollapsedPreference(storageKey) {
         return false;
     }
 }
-function ClickpesaLayout({ products, productLogo, productName = "", email, onProductChange, children, mode, preferences_categories, magicBellUserKey, magicbellApiKey, magicbellUserEmail, magicbellUserExternalId, menuItems, menu_has_icon, onLogout, onNotificationClick, onModeChange, darkModeSwitcher, letter = "", privacyPolicyUrl, termsAndConditionsUrl, sidebarMenuItems, Link, full_name = "", homeLink, sidebarSettingsLink, isSidebardSettingsLinkActive, customActions, showNotification = true, sidebarCollapsedStorageKey = DEFAULT_SIDEBAR_COLLAPSED_STORAGE_KEY, }) {
+function ClickpesaLayout({ products, productLogo, productName = "", email, onProductChange, children, mode, preferences_categories, magicBellUserKey, magicbellApiKey, magicbellUserEmail, magicbellUserExternalId, menuItems, menu_has_icon, onLogout, onNotificationClick, onModeChange, darkModeSwitcher, letter = "", privacyPolicyUrl, termsAndConditionsUrl, sidebarMenuItems, Link, full_name = "", homeLink, sidebarSettingsLink, isSidebardSettingsLinkActive, customActions, showNotification = true, sidebarCollapsedStorageKey = DEFAULT_SIDEBAR_COLLAPSED_STORAGE_KEY, selectedProduct, }) {
     const { width } = (0, react_use_1.useWindowSize)();
     const isDesktop = width > 767;
     const [theme, setMode] = (0, react_1.useState)(mode);
@@ -63,7 +63,8 @@ function ClickpesaLayout({ products, productLogo, productName = "", email, onPro
     return ((0, jsx_runtime_1.jsxs)("div", { className: "clickpesa-layout", "data-sidebar-collapsed": desktopCollapsed ? "true" : "false", style: {
             background: theme === "dark" ? "#1E272E" : "#F2F3F8",
             minHeight: "100vh",
-        }, "data-testid": "clickpesa-layout", children: [(0, jsx_runtime_1.jsx)(sidebar_template_1.SidebarTemplate, { sidebarOpen: sidebarOpen, close: () => setSidebarOpen(false), collapsed: desktopCollapsed, onExpand: expandSidebar, sidebarItems: (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: sidebarMenuItems.length > 0 && ((0, jsx_runtime_1.jsx)("ul", { style: {
+            ["--cp-sidebar-width"]: `${sidebarWidth}px`,
+        }, "data-testid": "clickpesa-layout", children: [(0, jsx_runtime_1.jsx)(sidebar_template_1.SidebarTemplate, { sidebarOpen: sidebarOpen, close: () => setSidebarOpen(false), collapsed: desktopCollapsed, onExpand: expandSidebar, selectedProduct: selectedProduct, sidebarItems: (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: sidebarMenuItems.length > 0 && ((0, jsx_runtime_1.jsx)("ul", { style: {
                             listStyle: "none",
                             width: "100%",
                         }, children: sidebarMenuItems.map((group, index) => {

@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import { CaretDown } from "@clickpesa/components-library.caret-down";
 import "./sidebar-header.sass";
@@ -5,19 +6,21 @@ import "./sidebar-header.sass";
 interface ProductType {
   productName: string;
   logo: string;
+  id?: string;
 }
 
 export interface SidebarHeaderProps {
   name: string;
-  email: string;
+  email: ReactNode;
   logo?: string;
   products?: ProductType[];
-  handleSwitching: (productName: string) => void;
+  handleSwitching: (product: string) => void;
   mode?: "dark" | "light";
   homeLink?: string;
   Link?: any;
   collapsed?: boolean;
   onExpand?: () => void;
+  selectedProduct?: string;
 }
 
 export function SidebarHeader({
@@ -31,6 +34,7 @@ export function SidebarHeader({
   homeLink,
   collapsed = false,
   onExpand,
+  selectedProduct,
 }: SidebarHeaderProps) {
   const logoSrc =
     logo ?? products?.find((p) => p.productName === name)?.logo;
@@ -80,18 +84,24 @@ export function SidebarHeader({
       {products && (
         <Popover.Portal>
           <Popover.Content className={`side-bar-content ${mode ?? ""}`}>
-            {products.map(({ productName, ...rest }, index) => (
-              <Popover.Close
-                className="product"
-                key={index}
-                onClick={() => {
-                  handleSwitching(productName);
-                }}
-                {...rest}
-              >
-                {productName}
-              </Popover.Close>
-            ))}
+            {products.map(({ productName, id, ...rest }, index) => {
+              const value = id || productName;
+              const isActive = selectedProduct
+                ? selectedProduct === id || selectedProduct === productName
+                : false;
+              return (
+                <Popover.Close
+                  className={`product ${isActive ? "active" : ""}`}
+                  key={index}
+                  onClick={() => {
+                    handleSwitching(value);
+                  }}
+                  {...rest}
+                >
+                  {productName}
+                </Popover.Close>
+              );
+            })}
           </Popover.Content>
         </Popover.Portal>
       )}
