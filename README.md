@@ -5,21 +5,33 @@ Shared ClickPesa dashboard UI components (GitHub-hosted replacement for Bit layo
 ## Install
 
 ```json
-"@clickpesa/dashboard-ui": "github:ClickPesa/dashboard-ui#v0.1.0"
+"@clickpesa/dashboard-ui": "github:ClickPesa/dashboard-ui#v0.1.2"
 ```
 
-Peer packages still required until those leave Bit: `top-bar`, `footer`, `icon-button`, `icons.menu`, `caret-down`, plus `@radix-ui/react-popover`, `react-use`, `react-router-dom`.
+Peer packages still required until those leave Bit: `top-bar`, `footer`, `icon-button`, `icons.menu`, `caret-down`, plus `@radix-ui/react-popover`, `react-use`, `react-router-dom`, and `antd` (for `AccessControlSwitchRow`).
 
 Consumer apps must be able to compile `.sass` (e.g. Vite + `sass`).
 
 ## Usage
 
 ```tsx
-import { ClickpesaLayout } from "@clickpesa/dashboard-ui";
+import {
+  ClickpesaLayout,
+  AccessControlSwitchRow,
+} from "@clickpesa/dashboard-ui";
 
 <ClickpesaLayout
   sidebarCollapsedStorageKey="admin-sidebar-collapsed"
   {/* ... */}
+/>
+
+<AccessControlSwitchRow
+  mode="light"
+  title="Dashboard login"
+  description="When on, the merchant can sign in."
+  status={<StatusTag name="Enabled" color="green" mode="light" />}
+  checked={loginEnabled}
+  onChange={setLoginEnabled}
 />
 ```
 

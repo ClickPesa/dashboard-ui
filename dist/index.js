@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SidebarMenuItem = exports.SidebarHeader = exports.SidebarTemplate = exports.ClickpesaLayout = void 0;
+exports.AccessControlSwitchRow = exports.SidebarMenuItem = exports.SidebarHeader = exports.SidebarTemplate = exports.ClickpesaLayout = void 0;
 var clickpesa_layout_1 = require("./layouts/clickpesa-layout");
 Object.defineProperty(exports, "ClickpesaLayout", { enumerable: true, get: function () { return clickpesa_layout_1.ClickpesaLayout; } });
 var sidebar_template_1 = require("./layouts/sidebar-template");
@@ -9,3 +9,5 @@ var sidebar_header_1 = require("./layouts/sidebar-header");
 Object.defineProperty(exports, "SidebarHeader", { enumerable: true, get: function () { return sidebar_header_1.SidebarHeader; } });
 var sidebar_menu_item_1 = require("./layouts/sidebar-menu-item");
 Object.defineProperty(exports, "SidebarMenuItem", { enumerable: true, get: function () { return sidebar_menu_item_1.SidebarMenuItem; } });
+var access_control_switch_row_1 = require("./access-control/access-control-switch-row");
+Object.defineProperty(exports, "AccessControlSwitchRow", { enumerable: true, get: function () { return access_control_switch_row_1.AccessControlSwitchRow; } });

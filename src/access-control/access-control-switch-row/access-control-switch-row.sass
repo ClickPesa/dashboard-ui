@@ -1,0 +1,50 @@
+.access-control-switch-row
+  width: 100%
+  padding: 1rem 0
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+
+  &.dark
+    border-bottom-color: rgba(255, 255, 255, 0.08)
+
+    .access-control-switch-row__description
+      color: rgba(255, 255, 255, 0.65)
+
+  &.is-last
+    padding-bottom: 0.5rem
+    border-bottom: none
+
+  &__grid
+    display: grid
+    grid-template-columns: 1fr auto
+    align-items: center
+    column-gap: 1rem
+    row-gap: 0.4rem
+    width: 100%
+
+  &__title
+    margin: 0
+    font-weight: 600
+    font-size: 14px
+    line-height: 1.4
+
+  &__status
+    justify-self: end
+    width: fit-content
+
+  &__description
+    margin: 0
+    font-weight: normal
+    font-size: 14px
+    line-height: 1.4
+    color: rgba(0, 0, 0, 0.65)
+
+  &__controls
+    justify-self: end
+    width: fit-content
+    display: inline-flex
+    align-items: center
+    gap: 0.75rem
+
+  &__children
+    width: 100%
+    margin-top: 0.4rem

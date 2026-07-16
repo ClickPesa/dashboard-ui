@@ -6,3 +6,5 @@ export { SidebarHeader } from "./layouts/sidebar-header";
 export type { SidebarHeaderProps } from "./layouts/sidebar-header";
 export { SidebarMenuItem } from "./layouts/sidebar-menu-item";
 export type { SidebarMenuItemProps, SidebarMenuItemChild, } from "./layouts/sidebar-menu-item";
+export { AccessControlSwitchRow } from "./access-control/access-control-switch-row";
+export type { AccessControlSwitchRowProps } from "./access-control/access-control-switch-row";
